@@ -67,6 +67,7 @@ public class LoginActivity extends BaseActivity implements ILoginView{
         if(bean.getError()==0){
             Intent gomain = new Intent(mContext, MainActivity.class);
             startActivity(gomain);
+            finish();
         }
     }
 }

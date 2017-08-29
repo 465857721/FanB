@@ -1,4 +1,4 @@
-package com.wetime.fanb.utils;
+package com.king.batterytest.fbaselib.utils;
 
 /**
  * Created by zhoukang on 2017/8/29.
