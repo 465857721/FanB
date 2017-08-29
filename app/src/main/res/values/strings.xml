@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FanB</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">订单管理</string>
+    <string name="title_dashboard">门店管理</string>
+    <string name="title_notifications">我的</string>
+</resources>
