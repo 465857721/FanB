@@ -8,4 +8,5 @@ public interface Const {
     String BASEURL = "http://merchant-test.weishike.net";
     String LOGIN = BASEURL + "/api/login";
     String ORDERPAGE = BASEURL + "/api/order";
+    String SHOPRPAGE = BASEURL + "/api/merchant";
 }

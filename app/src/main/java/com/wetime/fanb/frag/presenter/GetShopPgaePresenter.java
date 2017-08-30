@@ -3,10 +3,8 @@ package com.wetime.fanb.frag.presenter;
 
 import com.king.batterytest.fbaselib.utils.Const;
 import com.king.batterytest.fbaselib.utils.DataStringCallback;
-import com.wetime.fanb.act.bean.LoginResultBean;
-import com.wetime.fanb.act.iviews.ILoginView;
-import com.wetime.fanb.frag.bean.OrderPageBean;
-import com.wetime.fanb.frag.iviews.IGetOrderPageView;
+import com.wetime.fanb.frag.bean.ShopPageBean;
+import com.wetime.fanb.frag.iviews.IGetShopPageView;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import static com.king.batterytest.fbaselib.utils.GsonUtils.getGsonInstance;
@@ -16,10 +14,10 @@ import static com.king.batterytest.fbaselib.utils.GsonUtils.getGsonInstance;
  * Created by zhoukang on 2017/5/15.
  */
 
-public class GetOrderPgaePresenter {
-    private IGetOrderPageView iview;
+public class GetShopPgaePresenter {
+    private IGetShopPageView iview;
 
-    public GetOrderPgaePresenter(IGetOrderPageView iview) {
+    public GetShopPgaePresenter(IGetShopPageView iview) {
         this.iview = iview;
     }
 
@@ -27,17 +25,15 @@ public class GetOrderPgaePresenter {
 
         OkHttpUtils
                 .post()
-                .url(Const.ORDERPAGE)
+                .url(Const.SHOPRPAGE)
                 .addParams("token", iview.getToken())
-                .addParams("mid", iview.getMid())
                 .build()
-                .execute(new DataStringCallback(iview,false) {
+                .execute(new DataStringCallback(iview, false) {
                     @Override
                     public void onResponse(String s, int i) {
                         super.onResponse(s, i);
-
-                        OrderPageBean msg = getGsonInstance().fromJson(s, OrderPageBean.class);
-                        iview.onGetOrderResult(msg);
+                        ShopPageBean msg = getGsonInstance().fromJson(s, ShopPageBean.class);
+                        iview.onGetShopResult(msg);
                     }
                 });
     }

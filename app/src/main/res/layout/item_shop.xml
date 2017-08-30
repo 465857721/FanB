@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorbg"
+        />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:lineSpacingExtra="0sp"
+        android:textColor="#323233"
+        android:textSize="16sp"
+        tools:text="COCO宜欣城店"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="#dcdde0"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_shopinfo"
+            android:gravity="center"
+            android:lineSpacingExtra="0sp"
+            android:text="门店信息"
+            android:textColor="#575b64"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_qr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/iocn_shopqr"
+            android:gravity="center"
+            android:lineSpacingExtra="0sp"
+            android:text="收款码"
+            android:textColor="#575b64"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_manage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_manage_1"
+            android:gravity="center"
+            android:lineSpacingExtra="0sp"
+            android:text="店员管理"
+            android:textColor="#575b64"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+
+</LinearLayout>
