@@ -18,6 +18,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center"
@@ -33,6 +34,7 @@
                 android:background="#dcdde0"/>
 
             <ListView
+                android:id="@+id/lv_shop"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"/>

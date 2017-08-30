@@ -2,12 +2,18 @@ package com.wetime.fanb.act;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.king.batterytest.fbaselib.main.BaseActivity;
 import com.wetime.fanb.R;
-import com.wetime.fanb.act.presenter.LoginPresenter;
+import com.wetime.fanb.act.event.ChangeShopEvent;
+import com.wetime.fanb.frag.adapter.ShopNameAdapter;
+import com.wetime.fanb.frag.bean.OrderPageBean;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,15 +26,31 @@ public class ChoiceShopActivity extends BaseActivity {
     TextView tvCancel;
     @Bind(R.id.rl_choiceshop)
     RelativeLayout rlChoiceshop;
+    @Bind(R.id.lv_shop)
+    ListView lvShop;
 
+    private OrderPageBean bean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choiceshop);
         ButterKnife.bind(this);
+        bean = (OrderPageBean) getIntent().getSerializableExtra("data");
+        ShopNameAdapter adapter = new ShopNameAdapter(mContext,
+                bean.getData().getMerchants(),
+                bean.getData().getMerchant().getMid());
+        lvShop.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        lvShop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onBackPressed();
+                EventBus.getDefault().post(
+                        new ChangeShopEvent(bean.getData().getMerchants().get(position).getMid()));
 
-
+            }
+        });
     }
 
     @Override
@@ -44,6 +66,7 @@ public class ChoiceShopActivity extends BaseActivity {
                 onBackPressed();
                 break;
             case R.id.rl_choiceshop:
+                onBackPressed();
                 break;
         }
     }

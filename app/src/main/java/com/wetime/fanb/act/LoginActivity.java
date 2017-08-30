@@ -16,7 +16,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity implements ILoginView{
+public class LoginActivity extends BaseActivity implements ILoginView {
 
 
     @Bind(R.id.et_phone)
@@ -47,7 +47,7 @@ public class LoginActivity extends BaseActivity implements ILoginView{
 //        speechUtils.speak("饭团收银到账100.34元");
 
         loginPresenter.getLoginResult();
-        spu.setValue("phone",etPhone.getText().toString());
+        spu.setValue("phone", etPhone.getText().toString());
 
 
     }
@@ -64,7 +64,8 @@ public class LoginActivity extends BaseActivity implements ILoginView{
 
     @Override
     public void onCheckResult(LoginResultBean bean) {
-        if(bean.getError()==0){
+        if (bean.getError() == 0) {
+            spu.setToken(bean.getData().getToken());
             Intent gomain = new Intent(mContext, MainActivity.class);
             startActivity(gomain);
             finish();

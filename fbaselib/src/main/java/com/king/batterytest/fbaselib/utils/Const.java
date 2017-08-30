@@ -7,4 +7,5 @@ package com.king.batterytest.fbaselib.utils;
 public interface Const {
     String BASEURL = "http://merchant-test.weishike.net";
     String LOGIN = BASEURL + "/api/login";
+    String ORDERPAGE = BASEURL + "/api/order";
 }
