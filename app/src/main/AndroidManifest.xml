@@ -60,6 +60,7 @@
         </activity>
         <activity android:name=".act.LoginActivity"/>
         <activity android:name=".act.WebActivity"/>
+        <activity android:name=".act.AboutActivity"/>
         <activity
             android:name=".act.ChoiceShopActivity"
             android:theme="@style/translucent">

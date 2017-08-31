@@ -93,7 +93,6 @@
                 android:layout_weight="1"
                 android:gravity="end"
                 android:lineSpacingExtra="0sp"
-                android:text="15823456789"
                 android:textColor="#7d7e80"
                 android:textSize="15sp"
                 />
@@ -231,7 +230,6 @@
                 android:layout_weight="1"
                 android:gravity="end"
                 android:lineSpacingExtra="0sp"
-                android:text="0.25%"
                 android:textColor="#7d7e80"
                 android:textSize="15sp"
                 />
@@ -259,6 +257,7 @@
             android:layout_height="10dp"
             android:background="@color/colorbg"/>
         <TextView
+            android:id="@+id/tv_logout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="15sp"
