@@ -6,8 +6,9 @@ package com.wetime.fanb.act.bean;
 
 public class LoginResultBean {
 
+
     /**
-     * data : {"token":"Gbo4f7fswZHK50m3d3zcw8t2MAehWAZz"}
+     * data : {"token":"Gbo4f7fswZHK50m3d3zcw8t2MAehWAZz","isNeedChangePwd":"0","hrefModifyPwd":"http://merchant-test.weishike.net/user/update_password_form?token=Gbo4f7fswZHK50m3d3zcw8t2MAehWAZz"}
      * msg : 登录成功
      * error : 0
      */
@@ -43,9 +44,13 @@ public class LoginResultBean {
     public static class DataBean {
         /**
          * token : Gbo4f7fswZHK50m3d3zcw8t2MAehWAZz
+         * isNeedChangePwd : 0
+         * hrefModifyPwd : http://merchant-test.weishike.net/user/update_password_form?token=Gbo4f7fswZHK50m3d3zcw8t2MAehWAZz
          */
 
         private String token;
+        private String isNeedChangePwd;
+        private String hrefModifyPwd;
 
         public String getToken() {
             return token;
@@ -53,6 +58,22 @@ public class LoginResultBean {
 
         public void setToken(String token) {
             this.token = token;
+        }
+
+        public String getIsNeedChangePwd() {
+            return isNeedChangePwd;
+        }
+
+        public void setIsNeedChangePwd(String isNeedChangePwd) {
+            this.isNeedChangePwd = isNeedChangePwd;
+        }
+
+        public String getHrefModifyPwd() {
+            return hrefModifyPwd;
+        }
+
+        public void setHrefModifyPwd(String hrefModifyPwd) {
+            this.hrefModifyPwd = hrefModifyPwd;
         }
     }
 }

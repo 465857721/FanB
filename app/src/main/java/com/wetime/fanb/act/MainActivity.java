@@ -1,10 +1,16 @@
 package com.wetime.fanb.act;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.king.batterytest.fbaselib.main.BaseActivity;
 import com.king.batterytest.fbaselib.view.CustomViewPager;
@@ -57,6 +63,39 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         initView();
+        if (getIntent() != null && getIntent().getStringExtra("show") != null && getIntent().getStringExtra("show").equals("0")) {
+            showDialog(getIntent().getStringExtra("url"));
+        }
+    }
+
+    private void showDialog(final String url) {
+        LayoutInflater inflaterDl = LayoutInflater.from(mContext);
+        LinearLayout layout = (LinearLayout) inflaterDl.inflate(
+                R.layout.dialog_gochangepsw, null);
+        final AlertDialog tel_dialog = new AlertDialog.Builder(mContext).create();
+        tel_dialog.setCancelable(false);
+        tel_dialog.setCanceledOnTouchOutside(false);
+        tel_dialog.show();
+        tel_dialog.getWindow().setContentView(layout);
+
+
+        Button btnOK = (Button) layout.findViewById(R.id.dialog_btn_ok);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goWeb(url);
+
+            }
+        });
+
+    }
+
+    private void goWeb(String url) {
+        Intent goweb = new Intent(this, WebActivity.class);
+        goweb.putExtra("url", url);
+        startActivity(goweb);
+
+
     }
 
     private void initView() {
