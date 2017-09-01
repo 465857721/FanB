@@ -11,6 +11,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.king.batterytest.fbaselib.main.BaseFragment;
+import com.king.batterytest.fbaselib.main.model.BaseBean;
 import com.king.batterytest.fbaselib.utils.Tools;
 import com.wetime.fanb.R;
 import com.wetime.fanb.act.AboutActivity;
@@ -18,14 +19,16 @@ import com.wetime.fanb.act.LoginActivity;
 import com.wetime.fanb.act.WebActivity;
 import com.wetime.fanb.frag.bean.MyPageBean;
 import com.wetime.fanb.frag.iviews.IGetMyPageView;
+import com.wetime.fanb.frag.iviews.ILogoutView;
 import com.wetime.fanb.frag.presenter.GetMyPgaePresenter;
+import com.wetime.fanb.frag.presenter.LogoutPresenter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class MyFragment extends BaseFragment implements IGetMyPageView {
+public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutView {
 
     @Bind(R.id.tv_userhead)
     TextView tvUserhead;
@@ -118,10 +121,8 @@ public class MyFragment extends BaseFragment implements IGetMyPageView {
                 getActivity().startActivity(goAbout);
                 break;
             case R.id.tv_logout:
-                Tools.logout(getActivity());
-                getActivity().finish();
-                Intent login = new Intent(getActivity(), LoginActivity.class);
-                startActivity(login);
+                LogoutPresenter logoutPresenter =  new LogoutPresenter(this);
+                logoutPresenter.getLogoutResult();
                 break;
         }
     }
@@ -134,4 +135,16 @@ public class MyFragment extends BaseFragment implements IGetMyPageView {
 
     }
 
+    @Override
+    public String getPushToken() {
+        return null;
+    }
+
+    @Override
+    public void onLogoutResult(BaseBean bean) {
+        Tools.logout(getActivity());
+        getActivity().finish();
+        Intent login = new Intent(getActivity(), LoginActivity.class);
+        startActivity(login);
+    }
 }

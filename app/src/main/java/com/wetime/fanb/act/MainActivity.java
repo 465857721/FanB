@@ -1,11 +1,14 @@
 package com.wetime.fanb.act;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,8 +16,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.king.batterytest.fbaselib.main.BaseActivity;
+import com.king.batterytest.fbaselib.main.iview.IBaseVIew;
 import com.king.batterytest.fbaselib.view.CustomViewPager;
+import com.tencent.android.tpush.XGIOperateCallback;
+import com.tencent.android.tpush.XGPushConfig;
+import com.tencent.android.tpush.XGPushManager;
+import com.tencent.android.tpush.service.XGPushServiceV3;
 import com.wetime.fanb.R;
+import com.wetime.fanb.act.iviews.IBindPushView;
+import com.wetime.fanb.act.presenter.BindPushPresenter;
 import com.wetime.fanb.frag.HomeFragmentPagerAdapter;
 import com.wetime.fanb.frag.MyFragment;
 import com.wetime.fanb.frag.OrderFragment;
@@ -26,7 +36,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements IBindPushView{
     @Bind(R.id.vp)
     CustomViewPager vp;
     @Bind(R.id.navigation)
@@ -61,9 +71,10 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initXG();
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         initView();
-        if (getIntent() != null && getIntent().getStringExtra("show") != null && getIntent().getStringExtra("show").equals("0")) {
+        if (spu.getValue("first").equals("1")) {
             showDialog(getIntent().getStringExtra("url"));
         }
     }
@@ -114,5 +125,36 @@ public class MainActivity extends BaseActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.getMenu().getItem(0).setChecked(true);
         vp.setScanScroll(false);
+    }
+    private void initXG() {
+//        XGPushConfig.enableDebug(this, true);
+        // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
+        // 如果需要绑定账号，请使用registerPush(getApplicationContext(),account)版本
+        // 具体可参考详细的开发指南
+        // 传递的参数为ApplicationContext
+        Context context = getApplicationContext();
+        XGPushManager.registerPush(context, new XGIOperateCallback() {
+            @Override
+            public void onSuccess(Object o, int i) {
+                Handler mHandler = new Handler();
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        BindPushPresenter pushPresenter = new BindPushPresenter(MainActivity.this);
+                        pushPresenter.bindPush(XGPushConfig.getToken(MainActivity.this));
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(Object o, int i, String s) {
+                Log.d("TPush", "xg fail s = " + s);
+                Log.d("TPush", "xg fail i = " + i);
+            }
+        });
+
+        Intent service = new Intent(context, XGPushServiceV3.class);
+        context.startService(service);
     }
 }

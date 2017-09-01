@@ -11,4 +11,6 @@ public interface Const {
     String SHOPRPAGE = BASEURL + "/api/merchant";
     String MY = BASEURL + "/api/my";
     String UPDATE = BASEURL + "/api/system/info";
+    String PUSH_BIND = BASEURL + "/api/push/bind";
+    String LOGOUT = BASEURL + "/api/logout";
 }

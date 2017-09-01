@@ -66,9 +66,9 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     public void onCheckResult(LoginResultBean bean) {
         if (bean.getError() == 0) {
             spu.setToken(bean.getData().getToken());
+            spu.setValue("first",bean.getData().getIsNeedChangePwd());
+            spu.setValue("changepswurl",bean.getData().getHrefModifyPwd());
             Intent gomain = new Intent(mContext, MainActivity.class);
-            gomain.putExtra("show",bean.getData().getIsNeedChangePwd());
-            gomain.putExtra("url",bean.getData().getHrefModifyPwd());
             startActivity(gomain);
             finish();
         }
