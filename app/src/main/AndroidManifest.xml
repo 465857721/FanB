@@ -43,7 +43,7 @@
     <application
         android:name="com.king.batterytest.fbaselib.main.FApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -55,12 +55,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:theme="@style/AppThemeYellow"
-            android:name=".act.MainActivity">
+            android:name=".act.MainActivity"
+            android:theme="@style/AppThemeYellow">
         </activity>
         <activity
-            android:theme="@style/AppTheme"
-            android:name=".act.LoginActivity"/>
+            android:name=".act.LoginActivity"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".act.WebActivity"/>
         <activity android:name=".act.AboutActivity"/>
