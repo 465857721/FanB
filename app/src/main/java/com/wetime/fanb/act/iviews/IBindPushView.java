@@ -1,5 +1,6 @@
 package com.wetime.fanb.act.iviews;
 
+
 import com.king.batterytest.fbaselib.main.iview.IBaseVIew;
 
 /**

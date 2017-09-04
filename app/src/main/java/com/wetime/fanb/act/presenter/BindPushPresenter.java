@@ -4,10 +4,10 @@ package com.wetime.fanb.act.presenter;
 import android.util.Log;
 
 import com.king.batterytest.fbaselib.main.model.BaseBean;
-import com.king.batterytest.fbaselib.utils.Const;
 import com.king.batterytest.fbaselib.utils.GsonUtils;
 import com.king.batterytest.fbaselib.utils.MyStringCallback;
 import com.wetime.fanb.act.iviews.IBindPushView;
+import com.wetime.fanb.utils.Const;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 /**

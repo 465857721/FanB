@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">FBaselib</string>
-    <string name="tips_net_error">网络异常，请检查网络</string>
-    <string name="tips_form_json_error">返回数据格式错误</string>
-    <string name="tips_timeout">登录超时，请重新登录</string>
-</resources>

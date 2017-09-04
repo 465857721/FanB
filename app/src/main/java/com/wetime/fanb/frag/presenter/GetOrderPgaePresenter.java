@@ -1,12 +1,12 @@
 package com.wetime.fanb.frag.presenter;
 
 
-import com.king.batterytest.fbaselib.utils.Const;
 import com.king.batterytest.fbaselib.utils.DataStringCallback;
 import com.wetime.fanb.act.bean.LoginResultBean;
 import com.wetime.fanb.act.iviews.ILoginView;
 import com.wetime.fanb.frag.bean.OrderPageBean;
 import com.wetime.fanb.frag.iviews.IGetOrderPageView;
+import com.wetime.fanb.utils.Const;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import static com.king.batterytest.fbaselib.utils.GsonUtils.getGsonInstance;
