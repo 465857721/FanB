@@ -8,11 +8,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.speech.tts.TextToSpeech;
 import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.king.batterytest.fbaselib.utils.SharePreferenceUtil;
 import com.king.batterytest.fbaselib.utils.SpeechUtils;
 import com.king.batterytest.fbaselib.utils.Tools;
 import com.tencent.android.tpush.XGPushBaseReceiver;
@@ -22,9 +22,6 @@ import com.tencent.android.tpush.XGPushShowedResult;
 import com.tencent.android.tpush.XGPushTextMessage;
 import com.wetime.fanb.R;
 import com.wetime.fanb.act.LoadingActivity;
-import com.wetime.fanb.push.event.PushEvent;
-
-import org.greenrobot.eventbus.EventBus;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -70,8 +67,13 @@ public class PushReceiver extends XGPushBaseReceiver {
     }
 
     private void showNotice(Context mContext, String title, String msg) {
-        if (TextUtils.isEmpty(Tools.getSpu(mContext).getToken()))
+        SharePreferenceUtil spu = Tools.getSpu(mContext);
+        if (TextUtils.isEmpty(spu.getToken()))
             return;
+        if (spu.getValue(spu.getUsername() + "voice").equals("0")) {
+            return;
+        }
+
 
         SpeechUtils speechUtils = SpeechUtils.getsSpeechUtils(mContext);
 
