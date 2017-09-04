@@ -19,7 +19,7 @@ import static com.king.batterytest.fbaselib.utils.GsonUtils.getGsonInstance;
 public class DataStringCallback extends StringCallback {
     private boolean showDialog;
     private boolean showErrorToast;
-    private boolean showSuccessToast;  // 接口规范后  才能抽象出来
+    private boolean showSuccessToast;
     private IBaseVIew iview;
     private boolean isJudge;
 
