@@ -66,6 +66,7 @@ public class QrActivity extends BaseActivity {
                 onBackPressed();
                 break;
             case R.id.tv_download:
+                downQRcode(url);
                 break;
         }
     }

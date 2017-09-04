@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.wetime.fanb.R;
+import com.wetime.fanb.act.QrActivity;
 import com.wetime.fanb.act.WebActivity;
 import com.wetime.fanb.frag.bean.ShopPageBean;
 
@@ -76,7 +77,10 @@ public class ShopAdapter extends BaseAdapter {
         holder.tv_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goWeb(mData.get(position).getHrefCode());
+                Intent goqr = new Intent(context, QrActivity.class);
+                goqr.putExtra("url", mData.get(position).getImageCode());
+                context.startActivity(goqr);
+//                goWeb(mData.get(position).getHrefCode());
             }
         });
         holder.tv_manage.setOnClickListener(new View.OnClickListener() {

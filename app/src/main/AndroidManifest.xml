@@ -56,11 +56,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/AppThemeYellow"
             android:name=".act.MainActivity">
         </activity>
-        <activity android:name=".act.LoginActivity"/>
-        <activity android:name=".act.WebActivity"/>
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".act.LoginActivity"/>
+        <activity
+            android:name=".act.WebActivity"/>
         <activity android:name=".act.AboutActivity"/>
+        <activity android:name=".act.QrActivity"/>
         <activity
             android:name=".act.ChoiceShopActivity"
             android:theme="@style/translucent">

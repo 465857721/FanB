@@ -83,6 +83,15 @@ public class ShopPageBean {
             private String hrefCode;
             private String hrefUser;
             private String role;
+            private String  imageCode;
+
+            public String getImageCode() {
+                return imageCode;
+            }
+
+            public void setImageCode(String imageCode) {
+                this.imageCode = imageCode;
+            }
 
             public String getMid() {
                 return mid;
