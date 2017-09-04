@@ -46,6 +46,8 @@ public class ShopFragment extends BaseFragment implements IGetShopPageView {
 
     @Override
     public void onGetShopResult(ShopPageBean bean) {
+        if (bean == null)
+            return;
         ShopAdapter adapter = new ShopAdapter(getActivity(), bean.getData().getMerchants());
         lvShop.setAdapter(adapter);
         adapter.notifyDataSetChanged();

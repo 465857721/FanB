@@ -34,7 +34,8 @@ public class LogoutPresenter {
                     public void onResponse(String s, int i) {
                         super.onResponse(s, i);
                         BaseBean msg = getGsonInstance().fromJson(s, BaseBean.class);
-                        iview.onLogoutResult(msg);
+                        if (msg.getError() == 0)
+                            iview.onLogoutResult(msg);
                     }
                 });
     }

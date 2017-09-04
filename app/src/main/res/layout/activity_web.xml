@@ -9,45 +9,46 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:background="@color/head_color">-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF">
 
-            <!--<ImageView-->
-                <!--android:id="@+id/btn_back"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:paddingLeft="20dp"-->
-                <!--android:paddingRight="30dp"-->
-                <!--android:src="@drawable/icon_back"/>-->
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"
+                android:src="@drawable/icon_back"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="#323233"
+                android:textSize="18sp"/>
 
             <!--<TextView-->
-                <!--android:id="@+id/tv_title"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:gravity="center"-->
-                <!--android:text="title"-->
-                <!--android:textColor="@color/head_text_color"-->
-                <!--android:textSize="@dimen/text_top_title"/>-->
+            <!--android:id="@+id/tv_right"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingRight="15dp"-->
+            <!--android:text="title"-->
+            <!--android:textColor="@color/head_text_color"-->
+            <!--android:textSize="16sp"-->
+            <!--android:visibility="gone"/>-->
+        </RelativeLayout>
 
-            <!--<TextView-->
-                <!--android:id="@+id/tv_right"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:gravity="center"-->
-                <!--android:paddingRight="15dp"-->
-                <!--android:text="title"-->
-                <!--android:textColor="@color/head_text_color"-->
-                <!--android:textSize="16sp"-->
-                <!--android:visibility="gone"/>-->
-        <!--</RelativeLayout>-->
-        <!--<View-->
-            <!--android:background="@color/line_color"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0.5dp"/>-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#dcdde0"/>
+
         <WebView
             android:id="@+id/web_webshow"
             android:layout_width="match_parent"

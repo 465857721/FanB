@@ -34,7 +34,8 @@ public class GetUpdatePresenter {
                     public void onResponse(String s, int i) {
                         super.onResponse(s, i);
                         UpdateBean msg = getGsonInstance().fromJson(s, UpdateBean.class);
-                        iview.onGetMyResult(msg);
+                        if (msg.getError() == 0)
+                            iview.onGetMyResult(msg);
                     }
                 });
     }

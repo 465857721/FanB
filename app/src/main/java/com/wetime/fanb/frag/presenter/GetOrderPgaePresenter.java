@@ -31,13 +31,14 @@ public class GetOrderPgaePresenter {
                 .addParams("token", iview.getToken())
                 .addParams("mid", iview.getMid())
                 .build()
-                .execute(new DataStringCallback(iview,false) {
+                .execute(new DataStringCallback(iview, false) {
                     @Override
                     public void onResponse(String s, int i) {
                         super.onResponse(s, i);
 
                         OrderPageBean msg = getGsonInstance().fromJson(s, OrderPageBean.class);
-                        iview.onGetOrderResult(msg);
+                        if (msg.getError() == 0)
+                            iview.onGetOrderResult(msg);
                     }
                 });
     }

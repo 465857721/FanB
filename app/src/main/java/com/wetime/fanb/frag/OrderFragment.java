@@ -12,8 +12,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.king.batterytest.fbaselib.main.BaseFragment;
+import com.king.batterytest.fbaselib.main.FApp;
+import com.king.batterytest.fbaselib.utils.Tools;
 import com.wetime.fanb.R;
 import com.wetime.fanb.act.ChoiceShopActivity;
+import com.wetime.fanb.act.LoginActivity;
 import com.wetime.fanb.act.WebActivity;
 import com.wetime.fanb.act.event.ChangeShopEvent;
 import com.wetime.fanb.frag.adapter.HistoryAdapter;
@@ -70,6 +73,15 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
         super.onDestroyView();
         ButterKnife.unbind(this);
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onTimeOut() {
+        super.onTimeOut();
+        Tools.logout(getActivity());
+        FApp.getInstance().removeALLActivity();
+        Intent go = new Intent(getActivity(), LoginActivity.class);
+        startActivity(go);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

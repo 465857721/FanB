@@ -18,11 +18,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-
 public class WebActivity extends BaseActivity {
 
-//    @Bind(tv_title)
-//    TextView tvTitle;
+    @Bind(R.id.tv_title)
+    TextView tvTitle;
     @Bind(R.id.web_webshow)
     WebView web;
 
@@ -50,16 +49,14 @@ public class WebActivity extends BaseActivity {
         }
     }
 
-//    @OnClick({R.id.btn_back})
-//    public void onViewClicked(View view) {
-//        switch (view.getId()) {
-//            case R.id.btn_back:
-//                onBackPressed();
-//                break;
-//            case R.id.web_webshow:
-//                break;
-//        }
-//    }
+    @OnClick({R.id.btn_back})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_back:
+                onBackPressed();
+                break;
+        }
+    }
 
     private void webSetting() {
 
@@ -67,7 +64,7 @@ public class WebActivity extends BaseActivity {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
-//                tvTitle.setText(title);
+                tvTitle.setText(title);
 
             }
 

@@ -33,7 +33,8 @@ public class GetMyPgaePresenter {
                     public void onResponse(String s, int i) {
                         super.onResponse(s, i);
                         MyPageBean msg = getGsonInstance().fromJson(s, MyPageBean.class);
-                        iview.onGetMyResult(msg);
+                        if (msg.getError() == 0)
+                            iview.onGetMyResult(msg);
                     }
                 });
     }

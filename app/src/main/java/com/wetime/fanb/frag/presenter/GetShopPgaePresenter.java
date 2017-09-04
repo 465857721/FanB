@@ -33,7 +33,8 @@ public class GetShopPgaePresenter {
                     public void onResponse(String s, int i) {
                         super.onResponse(s, i);
                         ShopPageBean msg = getGsonInstance().fromJson(s, ShopPageBean.class);
-                        iview.onGetShopResult(msg);
+                        if (msg.getError() == 0)
+                            iview.onGetShopResult(msg);
                     }
                 });
     }
