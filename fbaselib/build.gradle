@@ -42,5 +42,4 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.malinskiy:superrecyclerview:1.1.4'
     compile 'com.google.android:flexbox:0.3.0-alpha3'
-
 }

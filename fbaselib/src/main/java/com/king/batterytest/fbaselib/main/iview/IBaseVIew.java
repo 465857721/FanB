@@ -7,6 +7,7 @@ package com.king.batterytest.fbaselib.main.iview;
 public interface IBaseVIew {
 
     void showLoading();//展示加载框
+
     void onTimeOut();
     void dismissLoading();//取消加载框展示
     void onNetError();// 网络错误

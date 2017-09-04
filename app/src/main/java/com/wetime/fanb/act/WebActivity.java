@@ -3,6 +3,7 @@ package com.wetime.fanb.act;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -11,6 +12,8 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.king.batterytest.fbaselib.main.BaseActivity;
+import com.king.batterytest.fbaselib.main.FApp;
+import com.king.batterytest.fbaselib.utils.Tools;
 import com.wetime.fanb.R;
 
 import butterknife.Bind;
@@ -92,11 +95,20 @@ public class WebActivity extends BaseActivity {
         web.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.e("zk", "url=" + url);
                 if (url.startsWith("mailto:") || url.startsWith("geo:") || url.startsWith("tel:")) {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(intent);
                 } else {
-                    view.loadUrl(url); // 在当前的webview中跳转到新的url
+                    if (url.contains("/site/login")) {
+                        Tools.logout(WebActivity.this);
+                        FApp.getInstance().removeALLActivity();
+                        Intent go = new Intent(WebActivity.this, LoginActivity.class);
+                        startActivity(go);
+                    } else {
+
+                        view.loadUrl(url); // 在当前的webview中跳转到新的url
+                    }
                 }
                 return true;
             }

@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.king.batterytest.fbaselib.main.BaseActivity;
-import com.king.batterytest.fbaselib.main.iview.IBaseVIew;
 import com.king.batterytest.fbaselib.view.CustomViewPager;
 import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushConfig;
@@ -36,7 +35,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements IBindPushView{
+public class MainActivity extends BaseActivity implements IBindPushView {
     @Bind(R.id.vp)
     CustomViewPager vp;
     @Bind(R.id.navigation)
@@ -126,6 +125,7 @@ public class MainActivity extends BaseActivity implements IBindPushView{
         navigation.getMenu().getItem(0).setChecked(true);
         vp.setScanScroll(false);
     }
+
     private void initXG() {
 //        XGPushConfig.enableDebug(this, true);
         // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
