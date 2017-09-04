@@ -22,13 +22,16 @@
             android:layout_height="match_parent"/>
 
     </FrameLayout>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#FFFFFF"
-        app:menu="@menu/navigation"/>
+        android:layout_height="wrap_content">
+        <View
+            android:background="@color/linebg"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+        <include layout="@layout/item_home_tab"/>
+    </LinearLayout>
+
 
 </LinearLayout>

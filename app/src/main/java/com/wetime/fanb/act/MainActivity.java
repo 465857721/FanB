@@ -4,16 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.king.batterytest.fbaselib.main.BaseActivity;
 import com.king.batterytest.fbaselib.view.CustomViewPager;
@@ -34,36 +35,37 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements IBindPushView {
     @Bind(R.id.vp)
     CustomViewPager vp;
-    @Bind(R.id.navigation)
-    BottomNavigationView navigation;
+    @Bind(R.id.content)
+    FrameLayout content;
+    @Bind(R.id.iv_tab1)
+    ImageView ivTab1;
+    @Bind(R.id.tv_tab1)
+    TextView tvTab1;
+    @Bind(R.id.ll_tab1)
+    LinearLayout llTab1;
+    @Bind(R.id.iv_tab2)
+    ImageView ivTab2;
+    @Bind(R.id.tv_tab2)
+    TextView tvTab2;
+    @Bind(R.id.ll_tab2)
+    LinearLayout llTab2;
+    @Bind(R.id.iv_tab3)
+    ImageView ivTab3;
+    @Bind(R.id.tv_tab3)
+    TextView tvTab3;
+    @Bind(R.id.ll_tab3)
+    LinearLayout llTab3;
+    @Bind(R.id.container)
+    LinearLayout container;
+
 
     private List<Fragment> list_fragment = new ArrayList<>();
 
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    vp.setCurrentItem(0);
-                    return true;
-                case R.id.navigation_dashboard:
-                    vp.setCurrentItem(1);
-                    return true;
-                case R.id.navigation_notifications:
-                    vp.setCurrentItem(2);
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +73,6 @@ public class MainActivity extends BaseActivity implements IBindPushView {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initXG();
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         initView();
         if (spu.getValue("first").equals("1")) {
             showDialog(getIntent().getStringExtra("url"));
@@ -121,8 +122,6 @@ public class MainActivity extends BaseActivity implements IBindPushView {
         vp.setCurrentItem(0);
         vp.setOffscreenPageLimit(2);
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.getMenu().getItem(0).setChecked(true);
         vp.setScanScroll(false);
     }
 
@@ -156,5 +155,60 @@ public class MainActivity extends BaseActivity implements IBindPushView {
 
         Intent service = new Intent(context, XGPushServiceV3.class);
         context.startService(service);
+    }
+
+    @OnClick({R.id.ll_tab1, R.id.ll_tab2, R.id.ll_tab3})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_tab1:
+                if (vp.getCurrentItem() != 0){
+                    initBottom(0);
+                    vp.setCurrentItem(0);
+                }
+                break;
+            case R.id.ll_tab2:
+                if (vp.getCurrentItem() != 1) {
+                    vp.setCurrentItem(1);
+                    initBottom(1);
+                }
+                break;
+            case R.id.ll_tab3:
+                if (vp.getCurrentItem() != 2) {
+                    vp.setCurrentItem(2);
+                    initBottom(2);
+                }
+                break;
+        }
+    }
+
+    private void initBottom(int item) {
+        if (item == 0) {
+            ivTab1.setImageResource(R.drawable.bot_1_on);
+            ivTab2.setImageResource(R.drawable.bot_2_off);
+            ivTab3.setImageResource(R.drawable.bot_3_off);
+
+            tvTab1.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            tvTab2.setTextColor(ContextCompat.getColor(this, R.color.bot_gray));
+            tvTab3.setTextColor(ContextCompat.getColor(this, R.color.bot_gray));
+        }
+        if (item == 1) {
+            ivTab1.setImageResource(R.drawable.bot_1_off);
+            ivTab2.setImageResource(R.drawable.bot_2_on);
+            ivTab3.setImageResource(R.drawable.bot_3_off);
+
+            tvTab1.setTextColor(ContextCompat.getColor(this, R.color.bot_gray));
+            tvTab2.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            tvTab3.setTextColor(ContextCompat.getColor(this, R.color.bot_gray));
+        }
+        if (item == 2) {
+            ivTab1.setImageResource(R.drawable.bot_1_off);
+            ivTab2.setImageResource(R.drawable.bot_2_off);
+            ivTab3.setImageResource(R.drawable.bot_3_on);
+
+            tvTab1.setTextColor(ContextCompat.getColor(this, R.color.bot_gray));
+            tvTab2.setTextColor(ContextCompat.getColor(this, R.color.bot_gray));
+            tvTab3.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        }
+
     }
 }
