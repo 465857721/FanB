@@ -62,7 +62,10 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
         View v = inflater.inflate(R.layout.fragment_order, null);
         ButterKnife.bind(this, v);
         EventBus.getDefault().register(this);
-
+        mid = spu.getValue("mid");
+        if (mid.equals("")) {
+            mid = "0";
+        }
         getOrderPgaePresenter = new GetOrderPgaePresenter(this);
         getOrderPgaePresenter.getOrderResult();
 
@@ -89,6 +92,7 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ChangeShopEvent event) {
         mid = event.getMid();
+        spu.setValue("mid", mid);
         getOrderPgaePresenter.getOrderResult();
     }
 
