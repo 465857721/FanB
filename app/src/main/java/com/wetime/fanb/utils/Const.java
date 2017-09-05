@@ -11,6 +11,7 @@ public interface Const {
     String ORDERPAGE = BASEURL + "/api/order";
     String SHOPRPAGE = BASEURL + "/api/merchant";
     String MY = BASEURL + "/api/my";
+    String MYSOUND = BASEURL + "/api/my/setting";
     String UPDATE = BASEURL + "/api/system/info";
     String PUSH_BIND = BASEURL + "/api/push/bind";
     String LOGOUT = BASEURL + "/api/logout";

@@ -20,15 +20,17 @@ import com.wetime.fanb.act.WebActivity;
 import com.wetime.fanb.frag.bean.MyPageBean;
 import com.wetime.fanb.frag.iviews.IGetMyPageView;
 import com.wetime.fanb.frag.iviews.ILogoutView;
+import com.wetime.fanb.frag.iviews.ISetSoundView;
 import com.wetime.fanb.frag.presenter.GetMyPgaePresenter;
 import com.wetime.fanb.frag.presenter.LogoutPresenter;
+import com.wetime.fanb.frag.presenter.SetSoundPresenter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutView {
+public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutView, ISetSoundView {
 
     @Bind(R.id.tv_userhead)
     TextView tvUserhead;
@@ -61,6 +63,7 @@ public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutVi
 
     private GetMyPgaePresenter getMyPgaePresenter;
     private MyPageBean bean;
+    private SetSoundPresenter setSoundPresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,7 +73,7 @@ public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutVi
         ButterKnife.bind(this, v);
         getMyPgaePresenter = new GetMyPgaePresenter(this);
         getMyPgaePresenter.getOrderResult();
-
+        setSoundPresenter = new SetSoundPresenter(this);
         return v;
     }
 
@@ -86,7 +89,7 @@ public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutVi
         }
 
         tvPhonenum.setText(bean.getData().getPhone());
-        if (spu.getValue(spu.getUsername() + "voice").equals("0")) {
+        if (bean.getData().getSound_enabled().equals("0")) {
             swVoice.setChecked(false);
         } else {
             swVoice.setChecked(true);
@@ -95,9 +98,9 @@ public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutVi
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    spu.setValue(spu.getUsername() + "voice", "1");
+                    setSoundPresenter.getSetResult("1");
                 } else {
-                    spu.setValue(spu.getUsername() + "voice", "0");
+                    setSoundPresenter.getSetResult("0");
                 }
             }
         });
@@ -121,7 +124,7 @@ public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutVi
                 getActivity().startActivity(goAbout);
                 break;
             case R.id.tv_logout:
-                LogoutPresenter logoutPresenter =  new LogoutPresenter(this);
+                LogoutPresenter logoutPresenter = new LogoutPresenter(this);
                 logoutPresenter.getLogoutResult();
                 break;
         }
@@ -146,5 +149,10 @@ public class MyFragment extends BaseFragment implements IGetMyPageView,ILogoutVi
         getActivity().finish();
         Intent login = new Intent(getActivity(), LoginActivity.class);
         startActivity(login);
+    }
+
+    @Override
+    public void onSetSoundResult(BaseBean bean) {
+
     }
 }

@@ -58,6 +58,15 @@ public class MyPageBean {
         private String acceptNotify;
         private String hrefModifyPwd;
         private String role;
+        private String sound_enabled;
+
+        public String getSound_enabled() {
+            return sound_enabled;
+        }
+
+        public void setSound_enabled(String sound_enabled) {
+            this.sound_enabled = sound_enabled;
+        }
 
         public String getUsername() {
             return username;

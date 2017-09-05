@@ -12,6 +12,7 @@ import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.king.batterytest.fbaselib.utils.GsonUtils;
 import com.king.batterytest.fbaselib.utils.SharePreferenceUtil;
 import com.king.batterytest.fbaselib.utils.SpeechUtils;
 import com.king.batterytest.fbaselib.utils.Tools;
@@ -22,6 +23,7 @@ import com.tencent.android.tpush.XGPushShowedResult;
 import com.tencent.android.tpush.XGPushTextMessage;
 import com.wetime.fanb.R;
 import com.wetime.fanb.act.LoadingActivity;
+import com.wetime.fanb.push.model.PushToneModel;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -51,9 +53,9 @@ public class PushReceiver extends XGPushBaseReceiver {
     @Override
     public void onTextMessage(Context context, XGPushTextMessage xgPushTextMessage) {
         Log.d(TAG, xgPushTextMessage.getContent());
-//        PushToneModel tone = GsonUtils.getGsonInstance().fromJson(
-//                xgPushTextMessage.getCustomContent(), PushToneModel.class);
-        showNotice(context, xgPushTextMessage.getTitle(), xgPushTextMessage.getContent());
+        PushToneModel tone = GsonUtils.getGsonInstance().fromJson(
+                xgPushTextMessage.getCustomContent(), PushToneModel.class);
+        showNotice(context, xgPushTextMessage.getTitle(), xgPushTextMessage.getContent(), tone.getSound_enabled());
     }
 
     @Override
@@ -66,18 +68,15 @@ public class PushReceiver extends XGPushBaseReceiver {
 
     }
 
-    private void showNotice(Context mContext, String title, String msg) {
+    private void showNotice(Context mContext, String title, String msg, String Sound_enabled) {
         SharePreferenceUtil spu = Tools.getSpu(mContext);
         if (TextUtils.isEmpty(spu.getToken()))
             return;
-        if (spu.getValue(spu.getUsername() + "voice").equals("0")) {
-            return;
+        if (Sound_enabled.equals("1")) {
+            SpeechUtils speechUtils = SpeechUtils.getsSpeechUtils(mContext);
+            speechUtils.speak(msg);
         }
 
-
-        SpeechUtils speechUtils = SpeechUtils.getsSpeechUtils(mContext);
-
-        speechUtils.speak(msg);
 
         Intent intent;
         intent = new Intent(mContext, LoadingActivity.class);

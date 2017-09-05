@@ -6,27 +6,28 @@ package com.wetime.fanb.push.model;
 
 public class PushToneModel {
 
+
     /**
-     * type : 1
-     * tone :
+     * money : 0.01
+     * sound_enabled : 1
      */
 
-    private String type;
-    private String tone;
+    private String money;
+    private String sound_enabled;
 
-    public String getType() {
-        return type;
+    public String getMoney() {
+        return money;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMoney(String money) {
+        this.money = money;
     }
 
-    public String getTone() {
-        return tone;
+    public String getSound_enabled() {
+        return sound_enabled;
     }
 
-    public void setTone(String tone) {
-        this.tone = tone;
+    public void setSound_enabled(String sound_enabled) {
+        this.sound_enabled = sound_enabled;
     }
 }
