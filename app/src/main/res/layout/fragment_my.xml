@@ -265,7 +265,7 @@
             android:textColor="#ff3f53"
             android:lineSpacingExtra="0sp"
             android:gravity="center"
-            android:text="退出登陆"
+            android:text="退出登录"
             />
     </LinearLayout>
 </ScrollView>
