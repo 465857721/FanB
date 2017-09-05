@@ -49,6 +49,8 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
     LinearLayout llHistory;
     @Bind(R.id.iv_down)
     ImageView ivDown;
+    @Bind(R.id.ll_today)
+    LinearLayout llToday;
     private String mid = "0";
     GetOrderPgaePresenter getOrderPgaePresenter;
     OrderPageBean bean;
@@ -127,6 +129,13 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
                 goWeb(bean.getData().getToday().getHref());
             }
         });
+        llToday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goWeb(bean.getData().getToday().getHref());
+            }
+        });
+
         lvHis.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
