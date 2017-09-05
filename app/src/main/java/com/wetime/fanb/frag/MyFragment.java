@@ -29,8 +29,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.wetime.fanb.R.id.tv_shopnum;
-
 
 public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutView, ISetSoundView {
 
@@ -155,6 +153,7 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
     @Override
     public void onLogoutResult(BaseBean bean) {
         Tools.logout(getActivity());
+        spu.setValue("mid", "");
         getActivity().finish();
         Intent login = new Intent(getActivity(), LoginActivity.class);
         startActivity(login);
