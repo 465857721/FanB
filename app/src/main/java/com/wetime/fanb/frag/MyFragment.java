@@ -38,8 +38,6 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
     TextView tvUserhead;
     @Bind(R.id.tv_username)
     TextView tvUsername;
-    @Bind(tv_shopnum)
-    TextView tvShopnum;
     @Bind(R.id.tv_phonenum)
     TextView tvPhonenum;
     @Bind(R.id.ll_phone)
@@ -62,6 +60,12 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
     LinearLayout llRate;
     @Bind(R.id.tv_aboutus)
     TextView tvAboutus;
+    @Bind(R.id.tv_shopnum)
+    TextView tvShopnum;
+    @Bind(R.id.ll_bossshow)
+    LinearLayout llBossshow;
+    @Bind(R.id.tv_logout)
+    TextView tvLogout;
 
     private GetMyPgaePresenter getMyPgaePresenter;
     private MyPageBean bean;
@@ -86,8 +90,10 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
         this.bean = bean;
         if (bean.getData().getRole().equals("1")) {
             tvUserhead.setText("老板");
+            llBossshow.setVisibility(View.VISIBLE);
         } else {
             tvUserhead.setText("员工");
+            llBossshow.setVisibility(View.GONE);
         }
         tvUsername.setText(bean.getData().getUsername());
         tvShopnum.setText("共" + bean.getData().getMerchantCount() + "家店铺");

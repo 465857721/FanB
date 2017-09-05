@@ -16,47 +16,51 @@
             android:background="@color/colorPrimary">
 
             <LinearLayout
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
                 <TextView
                     android:id="@+id/tv_userhead"
-                    android:background="@drawable/laoban"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:textSize="14sp"
-                    android:textColor="#31343a"
-                    android:lineSpacingExtra="0sp"
+                    android:background="@drawable/laoban"
                     android:gravity="center"
+                    android:lineSpacingExtra="0sp"
                     android:text="老板"
+                    android:textColor="#31343a"
+                    android:textSize="14sp"
                     />
+
                 <LinearLayout
-                    android:layout_marginLeft="15dp"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tv_username"
-                        android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:textColor="#ffffff"
+                        android:layout_marginTop="2dp"
                         android:lineSpacingExtra="0sp"
                         android:text="陈佳"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
                         />
+
                     <TextView
                         android:id="@+id/tv_shopnum"
-                        android:layout_marginTop="3dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="#ffffff"
+                        android:layout_marginTop="3dp"
                         android:lineSpacingExtra="0sp"
                         android:text="共3家店铺"
+                        android:textColor="#ffffff"
+                        android:textSize="14sp"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -114,36 +118,46 @@
             android:textColor="#323233"
             android:textSize="15sp"
             />
+
         <include layout="@layout/item_my_line"/>
+
         <RelativeLayout
-            android:paddingRight="12dp"
-            android:background="#FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+            android:paddingRight="12dp">
+
             <TextView
-                android:paddingLeft="12dp"
-                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="15sp"
-                android:textColor="#323233"
+                android:gravity="center"
                 android:lineSpacingExtra="0sp"
+                android:paddingLeft="12dp"
                 android:text="订单语音通知"
+                android:textColor="#323233"
+                android:textSize="15sp"
                 />
+
             <Switch
                 android:id="@+id/sw_voice"
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
+
         <LinearLayout
+            android:id="@+id/ll_bossshow"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/colorbg"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorbg"
+            android:orientation="vertical">
+
+
         <LinearLayout
             android:id="@+id/ll_card"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="10dp"
             android:background="#FFFFFF"
             android:orientation="horizontal"
             android:paddingLeft="12dp"
@@ -171,7 +185,9 @@
                 android:textSize="15sp"
                 />
         </LinearLayout>
+
         <include layout="@layout/item_my_line"/>
+
         <LinearLayout
             android:id="@+id/ll_daozhang"
             android:layout_width="match_parent"
@@ -203,7 +219,9 @@
                 android:textSize="15sp"
                 />
         </LinearLayout>
+
         <include layout="@layout/item_my_line"/>
+
         <LinearLayout
             android:id="@+id/ll_rate"
             android:layout_width="match_parent"
@@ -234,10 +252,12 @@
                 android:textSize="15sp"
                 />
         </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="@color/colorbg"/>
+
         <TextView
             android:id="@+id/tv_aboutus"
             android:layout_width="match_parent"
@@ -252,20 +272,22 @@
             android:textColor="#323233"
             android:textSize="15sp"
             />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="@color/colorbg"/>
+
         <TextView
             android:id="@+id/tv_logout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="15sp"
             android:background="#FFFFFF"
-            android:textColor="#ff3f53"
-            android:lineSpacingExtra="0sp"
             android:gravity="center"
+            android:lineSpacingExtra="0sp"
             android:text="退出登录"
+            android:textColor="#ff3f53"
+            android:textSize="15sp"
             />
     </LinearLayout>
 </ScrollView>
