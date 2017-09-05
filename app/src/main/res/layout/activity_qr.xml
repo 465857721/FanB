@@ -42,7 +42,7 @@
         android:layout_marginRight="15dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="下载"
+        android:text="保存收款码"
         android:textColor="#ffffff"
         android:textSize="17sp"/>
 
