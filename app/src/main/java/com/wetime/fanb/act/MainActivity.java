@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity implements IBindPushView {
         initXG();
         initView();
         if (spu.getValue("first").equals("1")) {
-            showDialog(getIntent().getStringExtra("url"));
+            showDialog(spu.getValue("changepswurl"));
         }
     }
 
@@ -95,7 +95,6 @@ public class MainActivity extends BaseActivity implements IBindPushView {
             @Override
             public void onClick(View v) {
                 goWeb(url);
-
             }
         });
 
@@ -161,7 +160,7 @@ public class MainActivity extends BaseActivity implements IBindPushView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_tab1:
-                if (vp.getCurrentItem() != 0){
+                if (vp.getCurrentItem() != 0) {
                     initBottom(0);
                     vp.setCurrentItem(0);
                 }
