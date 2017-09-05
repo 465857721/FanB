@@ -218,8 +218,7 @@
                 android:background="#dcdde0"/>
 
             <ListView
-                android:divider="#dcdde0"
-                android:dividerHeight="0.5dp"
+                android:divider="@null"
                 android:id="@+id/lv_his"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>

@@ -29,6 +29,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.wetime.fanb.R.id.tv_shopnum;
+
 
 public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutView, ISetSoundView {
 
@@ -36,7 +38,7 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
     TextView tvUserhead;
     @Bind(R.id.tv_username)
     TextView tvUsername;
-    @Bind(R.id.tv_shopnum)
+    @Bind(tv_shopnum)
     TextView tvShopnum;
     @Bind(R.id.tv_phonenum)
     TextView tvPhonenum;
@@ -87,7 +89,8 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
         } else {
             tvUserhead.setText("员工");
         }
-
+        tvUsername.setText(bean.getData().getUsername());
+        tvShopnum.setText("共" + bean.getData().getMerchantCount() + "家店铺");
         tvPhonenum.setText(bean.getData().getPhone());
         if (bean.getData().getSound_enabled().equals("0")) {
             swVoice.setChecked(false);

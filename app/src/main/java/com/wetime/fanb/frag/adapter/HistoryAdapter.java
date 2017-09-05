@@ -54,13 +54,15 @@ public class HistoryAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.item_history, null);
             holder.tv_date = (TextView) convertView.findViewById(R.id.tv_date);
             holder.tv_num = (TextView) convertView.findViewById(R.id.tv_num);
+            holder.tv_line = (TextView) convertView.findViewById(R.id.tv_line);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tv_date.setText(mData.get(position).getDt());
         holder.tv_num.setText(mData.get(position).getAmount() + " 元");
-
+        if (position == mData.size() - 1)
+            holder.tv_line.setVisibility(View.GONE);
 
         return convertView;
 
@@ -69,6 +71,7 @@ public class HistoryAdapter extends BaseAdapter {
     public static final class ViewHolder {
         public TextView tv_date;
         public TextView tv_num;
+        public TextView tv_line;
 
 
     }
