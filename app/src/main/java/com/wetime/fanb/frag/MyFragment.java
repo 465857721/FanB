@@ -17,6 +17,8 @@ import com.wetime.fanb.R;
 import com.wetime.fanb.act.AboutActivity;
 import com.wetime.fanb.act.LoginActivity;
 import com.wetime.fanb.act.WebActivity;
+import com.wetime.fanb.act.event.ReFreshMyEvent;
+import com.wetime.fanb.act.event.ReFreshOrderEvent;
 import com.wetime.fanb.frag.bean.MyPageBean;
 import com.wetime.fanb.frag.iviews.IGetMyPageView;
 import com.wetime.fanb.frag.iviews.ILogoutView;
@@ -24,6 +26,10 @@ import com.wetime.fanb.frag.iviews.ISetSoundView;
 import com.wetime.fanb.frag.presenter.GetMyPgaePresenter;
 import com.wetime.fanb.frag.presenter.LogoutPresenter;
 import com.wetime.fanb.frag.presenter.SetSoundPresenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -75,6 +81,7 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
 
         View v = inflater.inflate(R.layout.fragment_my, null);
         ButterKnife.bind(this, v);
+        EventBus.getDefault().register(this);
         getMyPgaePresenter = new GetMyPgaePresenter(this);
         getMyPgaePresenter.getOrderResult();
         setSoundPresenter = new SetSoundPresenter(this);
@@ -114,10 +121,16 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
         tvRate.setText(bean.getData().getRate());
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(ReFreshMyEvent event) {
+
+        getMyPgaePresenter.getOrderResult();
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+        EventBus.getDefault().unregister(this);
     }
 
     @OnClick({R.id.tv_changepsw, R.id.tv_aboutus, R.id.tv_logout})

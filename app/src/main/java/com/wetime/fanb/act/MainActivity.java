@@ -23,6 +23,7 @@ import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 import com.tencent.android.tpush.service.XGPushServiceV3;
 import com.wetime.fanb.R;
+import com.wetime.fanb.act.event.ReFreshMyEvent;
 import com.wetime.fanb.act.event.ReFreshOrderEvent;
 import com.wetime.fanb.act.iviews.IBindPushView;
 import com.wetime.fanb.act.presenter.BindPushPresenter;
@@ -179,6 +180,7 @@ public class MainActivity extends BaseActivity implements IBindPushView {
                 if (vp.getCurrentItem() != 2) {
                     vp.setCurrentItem(2);
                     initBottom(2);
+                    EventBus.getDefault().post(new ReFreshMyEvent());
                 }
                 break;
         }
