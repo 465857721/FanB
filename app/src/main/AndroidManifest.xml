@@ -55,6 +55,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:launchMode="singleTask"
             android:name=".act.MainActivity"
             android:theme="@style/AppThemeYellow">
         </activity>
