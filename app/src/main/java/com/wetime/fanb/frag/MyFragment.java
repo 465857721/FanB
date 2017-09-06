@@ -95,9 +95,11 @@ public class MyFragment extends BaseFragment implements IGetMyPageView, ILogoutV
         this.bean = bean;
         if (bean.getData().getRole().equals("1")) {
             tvUserhead.setText("老板");
+            tvUserhead.setBackgroundResource(R.drawable.laoban);
             llBossshow.setVisibility(View.VISIBLE);
         } else {
             tvUserhead.setText("员工");
+            tvUserhead.setBackgroundResource(R.drawable.yuangong);
             llBossshow.setVisibility(View.GONE);
         }
         tvUsername.setText(bean.getData().getUsername());
