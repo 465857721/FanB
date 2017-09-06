@@ -169,6 +169,11 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
         });
         if (bean.getData().getMerchants().size() <= 1)
             ivDown.setVisibility(View.INVISIBLE);
+
+        if(bean.getData().getLast3month().size()<=0)
+            llHistory.setVisibility(View.GONE);
+        else
+            llHistory.setVisibility(View.VISIBLE);
     }
 
     private void goWeb(String url) {
