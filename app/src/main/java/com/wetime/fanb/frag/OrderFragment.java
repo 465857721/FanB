@@ -24,6 +24,7 @@ import com.wetime.fanb.frag.adapter.HistoryAdapter;
 import com.wetime.fanb.frag.bean.OrderPageBean;
 import com.wetime.fanb.frag.iviews.IGetOrderPageView;
 import com.wetime.fanb.frag.presenter.GetOrderPgaePresenter;
+import com.wetime.fanb.push.event.PushEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -103,8 +104,15 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
         spu.setValue("mid", mid);
         getOrderPgaePresenter.getOrderResult();
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ReFreshOrderEvent event) {
+
+        getOrderPgaePresenter.getOrderResult();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(PushEvent event) {
 
         getOrderPgaePresenter.getOrderResult();
     }

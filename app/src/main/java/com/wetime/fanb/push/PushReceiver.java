@@ -23,7 +23,10 @@ import com.tencent.android.tpush.XGPushShowedResult;
 import com.tencent.android.tpush.XGPushTextMessage;
 import com.wetime.fanb.R;
 import com.wetime.fanb.act.LoadingActivity;
+import com.wetime.fanb.push.event.PushEvent;
 import com.wetime.fanb.push.model.PushToneModel;
+
+import org.greenrobot.eventbus.EventBus;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -106,7 +109,7 @@ public class PushReceiver extends XGPushBaseReceiver {
 
 
         mNotificationManager.notify(id, mBuilder.build());
-
+        EventBus.getDefault().post(new PushEvent());
     }
 
     private boolean isForeground(Context context) {
