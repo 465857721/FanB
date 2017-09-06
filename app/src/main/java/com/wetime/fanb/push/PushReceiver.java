@@ -55,7 +55,10 @@ public class PushReceiver extends XGPushBaseReceiver {
         Log.d(TAG, xgPushTextMessage.getContent());
         PushToneModel tone = GsonUtils.getGsonInstance().fromJson(
                 xgPushTextMessage.getCustomContent(), PushToneModel.class);
-        showNotice(context, xgPushTextMessage.getTitle(), xgPushTextMessage.getContent(), tone.getSound_enabled());
+        showNotice(context,
+                xgPushTextMessage.getTitle(),
+                xgPushTextMessage.getContent(),
+                tone.getSound_enabled(), Integer.valueOf(tone.getPush_id()));
     }
 
     @Override
@@ -68,7 +71,7 @@ public class PushReceiver extends XGPushBaseReceiver {
 
     }
 
-    private void showNotice(Context mContext, String title, String msg, String Sound_enabled) {
+    private void showNotice(Context mContext, String title, String msg, String Sound_enabled, int id) {
         SharePreferenceUtil spu = Tools.getSpu(mContext);
         if (TextUtils.isEmpty(spu.getToken()))
             return;
@@ -102,7 +105,8 @@ public class PushReceiver extends XGPushBaseReceiver {
         mBuilder.setSmallIcon(R.drawable.login_icon);//设置通知小ICON
 
 
-        mNotificationManager.notify(1000, mBuilder.build());
+        mNotificationManager.notify(id, mBuilder.build());
+
     }
 
     private boolean isForeground(Context context) {

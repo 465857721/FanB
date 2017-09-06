@@ -23,12 +23,15 @@ import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 import com.tencent.android.tpush.service.XGPushServiceV3;
 import com.wetime.fanb.R;
+import com.wetime.fanb.act.event.ReFreshOrderEvent;
 import com.wetime.fanb.act.iviews.IBindPushView;
 import com.wetime.fanb.act.presenter.BindPushPresenter;
 import com.wetime.fanb.frag.HomeFragmentPagerAdapter;
 import com.wetime.fanb.frag.MyFragment;
 import com.wetime.fanb.frag.OrderFragment;
 import com.wetime.fanb.frag.ShopFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -163,6 +166,7 @@ public class MainActivity extends BaseActivity implements IBindPushView {
                 if (vp.getCurrentItem() != 0) {
                     initBottom(0);
                     vp.setCurrentItem(0);
+                    EventBus.getDefault().post(new ReFreshOrderEvent());
                 }
                 break;
             case R.id.ll_tab2:

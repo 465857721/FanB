@@ -19,6 +19,7 @@ import com.wetime.fanb.act.ChoiceShopActivity;
 import com.wetime.fanb.act.LoginActivity;
 import com.wetime.fanb.act.WebActivity;
 import com.wetime.fanb.act.event.ChangeShopEvent;
+import com.wetime.fanb.act.event.ReFreshOrderEvent;
 import com.wetime.fanb.frag.adapter.HistoryAdapter;
 import com.wetime.fanb.frag.bean.OrderPageBean;
 import com.wetime.fanb.frag.iviews.IGetOrderPageView;
@@ -66,8 +67,7 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
         if (mid.equals("")) {
             mid = "0";
         }
-        getOrderPgaePresenter = new GetOrderPgaePresenter(this);
-        getOrderPgaePresenter.getOrderResult();
+
 
         return v;
     }
@@ -79,6 +79,14 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
         ButterKnife.unbind(this);
         EventBus.getDefault().unregister(this);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getOrderPgaePresenter = new GetOrderPgaePresenter(this);
+        getOrderPgaePresenter.getOrderResult();
+    }
+
 
     @Override
     public void onTimeOut() {
@@ -93,6 +101,11 @@ public class OrderFragment extends BaseFragment implements IGetOrderPageView {
     public void onMessageEvent(ChangeShopEvent event) {
         mid = event.getMid();
         spu.setValue("mid", mid);
+        getOrderPgaePresenter.getOrderResult();
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(ReFreshOrderEvent event) {
+
         getOrderPgaePresenter.getOrderResult();
     }
 

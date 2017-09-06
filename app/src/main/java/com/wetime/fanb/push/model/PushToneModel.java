@@ -14,6 +14,15 @@ public class PushToneModel {
 
     private String money;
     private String sound_enabled;
+    private String push_id;
+
+    public String getPush_id() {
+        return push_id;
+    }
+
+    public void setPush_id(String push_id) {
+        this.push_id = push_id;
+    }
 
     public String getMoney() {
         return money;
