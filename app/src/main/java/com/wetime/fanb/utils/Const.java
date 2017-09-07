@@ -5,8 +5,8 @@ package com.wetime.fanb.utils;
  */
 
 public interface Const {
-    String BASEURL = "http://merchant-test.weishike.net";
-//    String BASEURL = "https://merchant.weishike.net";
+//    String BASEURL = "http://merchant-test.weishike.net";
+    String BASEURL = "https://merchant.weishike.net";
     String LOGIN = BASEURL + "/api/login";
     String ORDERPAGE = BASEURL + "/api/order";
     String SHOPRPAGE = BASEURL + "/api/merchant";
